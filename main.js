@@ -15,13 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const list = document.getElementById("results");
   list.innerHTML = ""; // clear 'Loading...'
 
-  db.collection("races").orderBy("date", "desc").get().then(snapshot => {
+  db.collection("Drivers").orderBy("name").get().then(snapshot => {
     snapshot.forEach(doc => {
-      const race = doc.data();
+      const driver = doc.data();
       const item = document.createElement("li");
       item.innerHTML = `
-        <strong>${race.name}</strong> — ${race.date}<br>
-        Winner: ${race.winner} (${race.time})
+        <strong>${driver.name}</strong> — ${driver.country}<br>
+        Winner: ${driver.wins} (${driver.poles})
       `;
       list.appendChild(item);
     });
